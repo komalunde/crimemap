@@ -15,10 +15,11 @@ def home():
         data = None
     return render_template("home.html", data=data)
 
+
 @app.route("/add",methods=["POST"])
 def add():
     try:
-        data = request.form.get("userinput")
+        data = ['1', '2', '12-2-2017', 'sd', request.form.get("userinput")]
         DB.add_input(data)
     except Exception as e:
         print e
@@ -27,7 +28,7 @@ def add():
 @app.route("/clear")
 def clear():
     try:
-        DB.clear.all()
+        DB.clear_all()
     except Exception as e:
         print e
     return home()
